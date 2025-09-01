@@ -40,6 +40,8 @@ def main():
     while True:
         if not game_over:
             score_text = font.render(f"Score: {player.score}", True, (255, 255, 255))
+            lives_counter = font.render(f"Lives left: {player.lives}", True, (255, 255, 255))
+
             
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -48,14 +50,21 @@ def main():
             for obj in drawable:
                 obj.draw(screen)
             screen.blit(score_text, (10, 10))
+            screen.blit(lives_counter, (1100, 10))
             updatable.update(dt)
             for obj in asteroids:
-                if player.collision(obj):
+                if not player.collision(obj):
+                    continue
+                obj.kill()
+                # player.position = pygame.Vector2(SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
+                player.lives -= 1
+                if player.lives == 0:
+                    game_over = True   
                     print(f"Game over! Your score is {player.score}")
-                    game_over = True
-                    player_score = player.score
-                    break
-                    # exit(0)
+                player_score = player.score
+                break
+                # exit(0)
+            
             if game_over:
                 continue
             for asteroid in asteroids:
