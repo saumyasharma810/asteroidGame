@@ -1,3 +1,31 @@
+# How to Install and Run the Project
+
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/saumyasharma810/asteroidGame.git
+   cd asteroidGame
+   ```
+
+2. **Create and activate a virtual environment:**
+   ```sh
+   python3 -m venv .venv
+   source .venv/bin/activate
+   ```
+
+3. **Install dependencies:**
+   ```sh
+   pip install pygame
+   ```
+
+4. **Run the game:**
+   ```sh
+   python main.py
+   ```
+
+
+
+
+
 # Features needed -
 
 - [x] Add a scoring system 
