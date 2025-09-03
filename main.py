@@ -14,6 +14,7 @@ def main():
     pygame.font.init() 
     font = pygame.font.SysFont('Arial', 32)
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    background_image = pygame.image.load('img/background.png').convert()
     clock = pygame.time.Clock()
     dt = 0
     updatable = pygame.sprite.Group()
@@ -48,7 +49,8 @@ def main():
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     return
-            screen.fill(color=(0,0,0))
+            # screen.fill(color=(0,0,0))
+            screen.blit(background_image, (0, 0))
             for obj in drawable:
                 obj.draw(screen)
             screen.blit(score_text, (10, 10))
@@ -85,7 +87,8 @@ def main():
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     return
-            screen.fill((0,0,0))
+            # screen.fill((0,0,0))
+            screen.blit(background_image, (0, 0))
             score_text = font.render(f"Your Score: {player_score}", True, (255, 255, 255))
             screen.blit(score_text, ((SCREEN_WIDTH - score_text.get_width()) // 2, (SCREEN_HEIGHT - score_text.get_height()) // 2))
             pygame.display.flip()
